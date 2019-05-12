@@ -7,7 +7,7 @@ path_to_watch = "./test_folder/"
 before = dict([(f, os.stat(path_to_watch+f).st_mtime)
               for f in os.listdir(path_to_watch)])
 #dropbx = '/Users/hamidrezaomidvar/Desktop/Dropbox-Uploader/dropbox_uploader.sh'
-dropbx = '/Users/hamidrezaomidvar/Desktop/Dropbox-Uploader/dropbox_uploader.sh'
+dropbx = '/home/users/homidvar/Dropbox-Uploader/dropbox_uploader.sh'
 
 while 1:
 
