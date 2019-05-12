@@ -21,6 +21,17 @@ while 1:
     modified = [f for f in after if f in before
                 and after[f] != before[f]]
 
+    time.sleep(0.5)
+
+    being_added = [f for f in added
+                if after[f] != os.stat(path_to_watch+f).st_mtime]
+    added=[f for f in added if not f in being_added]
+    
+
+    being_modified = [f for f in modified
+                if after[f] != os.stat(path_to_watch+f).st_mtime]
+    modified=[f for f in modified if not f in being_modified]
+
     if added:
         for f in added:
             bash_cmd = [dropbx, 'upload', path_to_watch+f, '/']
@@ -28,7 +39,6 @@ while 1:
 
     if modified:
         for f in modified:
-            print(os.stat(path_to_watch+f).st_mtime)
             bash_cmd = [dropbx, 'upload', path_to_watch+f, '/']
             call(bash_cmd)
 
